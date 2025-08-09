@@ -27,21 +27,21 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <div className="emoji-div">
-        <div className="emoji-container" onClick={() => {}}>
-          <div className="emoji-box">
+      <div className={styles.emojiDiv}>
+        <div className={styles.emojiContainer} onClick={() => {}}>
+          <div className={styles.emojiBox}>
             {object_emojis[currentEmojiIndex]}
           </div>
         </div>
-
-        <div className="emoji-container">
-          <div className="emoji-box">
+      <p>+</p>
+        <div className={styles.emojiContainer}>
+          <div className={styles.emojiBox}>
             {action_emojis[actionEmojiIndex]}
           </div>
         </div>
-
-        <div className="emoji-container">
-          <div className="emoji-box">
+      <p>+</p>
+        <div className={styles.emojiContainer}>
+          <div className={styles.emojiBox}>
             🟩
           </div>
         </div>
