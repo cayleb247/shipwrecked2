@@ -3,6 +3,7 @@
 import styles from "./page.module.css";
 import { useState } from "react";
 import EmojiPicker from '@/components/EmojiPicker';
+import React from "react";
 import EmotionSlider from "@/components/EmotionSlider";
 import ArouselSlider from "@/components/ArouselSlider";
 
@@ -11,14 +12,31 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const object_emojis = ["🚃", "👨", "🐕", "✈️", "🌮", "📕"];
   const action_emojis = ["🏃‍➡️", "🏊", "🚶‍♂️", "🤣"];
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  // React.useEffect(async () => {
-  //   const response = await fetch('/api/image', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({})
-  //   })
-  // }, [loading==true]);
+  const handleGenerate = async () => {
+    const response = await fetch('/api/image', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        subject: emoji1,
+        subjectEmotion: emoji1Emotion,
+        subjectArousal: emoji1Arousal,
+        verb: emoji2,
+        verbEmotion: emoji2Emotion,
+        verbArousal: emoji2Arousal,
+        object: emoji3,
+        objectEmotion: emoji3Emotion,
+        objectArousal: emoji3Arousal
+      })
+    });
+
+    console.log(response);
+    const url = await response.json();
+    console.log(url);
+    setImageUrl(url);
+  }
+
   const [emoji1, setEmoji1] = useState<string>(object_emojis[0]);
   const [emoji1Emotion, setEmoji1Emotion] = useState([50]);
   const [emoji1Arousal, setEmoji1Arousal] = useState([50]);
@@ -64,25 +82,26 @@ export default function Home() {
           </div>
         </div>
 
-        {loading ? (
-          <div className="flex items-center">
-            <div className="spinner">
-              <div className="spinnerin"></div>
-            </div>
-          </div>
-        ) : (
-          <div className="flex items-center" onClick={() => setLoading(true)}>
-            <button className="bg-green-200 rounded-full text-white w-16 h-16 hover:bg-green-400 transition-colors duration-300">
+        <div className="flex items-center" onClick={() => { setLoading(true); handleGenerate(); }}>
+            <button className="bg-green-200 rounded-full text-white w-16 h-16 hover:bg-green-400 transition-all duration-300 hover:w-20 hover:h-20">
               <span className="text-black"> = </span>
             </button>
           </div>
-        )}
-
       </div>
 
       <div className="flex flex-col items-center">
-        <div>
-          {/* Open AI image */}
+        <div> 
+          {
+            loading &&
+            <div className="spinner">
+              <div className="spinnerin"></div>
+            </div>
+          }
+          {imageUrl && 
+            <div className="w-64 h-64 rounded-lg">
+              <img src={imageUrl} onLoad={() => setLoading(false)}/>
+            </div>
+          }
         </div>
 
         <div>
