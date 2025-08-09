@@ -14,8 +14,8 @@ export default function Home() {
   const action_emojis = ["🏃‍➡️", "🏊", "🚶‍♂️", "🤣"];
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  const handleGenerate = async () => {
-    const response = await fetch('/api/image', {
+  const createPrompt = async () => {
+    const response = await fetch('/api/text', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -31,10 +31,26 @@ export default function Home() {
       })
     });
 
-    console.log(response);
-    const url = await response.json();
-    console.log(url);
-    setImageUrl(url);
+    const data = await response.json();
+    console.log(data);
+
+    return data;
+  };
+
+  const handleGenerate = async () => {
+    const promptData = await createPrompt();
+    const promptText = promptData.text || promptData; 
+    if(promptText) {
+      const response = await fetch('/api/image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: promptText })
+      });
+      console.log(response);
+      const url = await response.json();
+      console.log(url);
+      setImageUrl(url);
+    } 
   }
 
   const [emoji1, setEmoji1] = useState<string>(object_emojis[0]);
@@ -98,17 +114,13 @@ export default function Home() {
             </div>
           }
           {imageUrl && 
-            <div className="w-64 h-64 rounded-lg">
+            <div className="w-96 h-96 object-contain rounded-lg">
               <img src={imageUrl} onLoad={() => setLoading(false)}/>
             </div>
           }
         </div>
 
-        <div>
-          {/* Webcam */}
-        </div>
       </div>
-
     </div>
   );
 }
