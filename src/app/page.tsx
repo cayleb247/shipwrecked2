@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.emojiDiv}>
+      <div className="flex flex-row gap-4 text-lg">
         <div className={styles.emojiContainer} onClick={() => {}}>
           <div className={styles.emojiBox}>
             <EmojiPicker emojis={object_emojis} />
@@ -24,19 +24,23 @@ export default function Home() {
             <EmojiPicker emojis={action_emojis} />
           </div>
         </div>
-        <p>+</p>
+        <div className="items-center h-full">
+          <p className="text-3xl">+</p>
+        </div>
         <div className={styles.emojiContainer}>
           <div className={styles.emojiBox}>
             🟩
           </div>
         </div>
+
+        <div>
+          <button className="bg-green-200 rounded-full text-white w-16 h-16 hover:">
+            <span className="text-black"> = </span>
+          </button>
+        </div>
       </div>
 
-      <div className="mt-3">
-        <button className="bg-green-200 rounded-full text-white w-16 h-16 hover:">
-          <span className="text-black"> = </span>
-        </button>
-      </div>
+      
     </div>
   );
 }

@@ -11,10 +11,7 @@
   grid-template-rows: 3fr 3fr 1fr;
   align-items: center;
   justify-items: center;
-  height: 100svh;
-
-  /* padding: 80px; */
-  /* gap: 64px; */
+  margin-top: 60px;
   font-family: var(--font-geist-sans);
 }
 
@@ -168,51 +165,4 @@ a.secondary {
   }
 }
 
-.emojiBox {
-  box-sizing: border-box;
-  aspect-ratio: 1 / 1;
-  font-size: 100px;
-  border: dashed 1px grey;
-  border-radius: 8px;
-  background-color: rgb(226, 226, 226);
-  &:hover {
-    cursor: pointer;
-  }
-}
 
-.emojiDiv {
-  font-size: 30px;
-  display: flex;
-  flex-direction: row;
-  column-count: auto;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 3rem;
-}
-
-.fullemojiContainer {
-  padding-left: 60px;
-  padding-right: 60px;
-  padding-top: 100px;
-  display: flex;
-  border-radius: 25px;
-}
-
-.emotionemojiPositive {
-  font-size: 30px;
-  border-radius: 15px;
-  background-color: lightgreen;
-}
-
-.emotionemojiNegative {
-  font-size: 30px;
-  border-radius: 15px;
-  background-color: lightcoral;
-}
-
-.emotionemojiNeutral {
-  font-size: 30px;
-  border-radius: 15px;
-  background-color: lightgray;
-}
