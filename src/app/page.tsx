@@ -2,6 +2,7 @@
 
 import styles from "./page.module.css";
 import * as React from 'react';
+import ShowObjects from "./components/showObjects";
 
 export default function Home() {
   const object_emojis = ["🚃", "👨", "🐕", "✈️", "🌮", "📕"];
@@ -28,7 +29,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <div className="emoji-div">
-        <div className="emoji-container" onClick={() => {}}>
+        <div className="emoji-container" onClick={() => {ShowObjects}}>
           <div className="emoji-box">
             {object_emojis[currentEmojiIndex]}
           </div>

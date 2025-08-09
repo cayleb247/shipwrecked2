@@ -1,5 +1,6 @@
 export default function ShowObjects() {
     return (
+        // change to slider
         <div>
             <div className="fullemoji-container">
                 <div className="emotionemoji-positive">
@@ -14,7 +15,7 @@ export default function ShowObjects() {
             </div>
 
             <div>
-                
+
             </div>
         </div>
     )
