@@ -5,13 +5,13 @@
 
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
-  color: black;
-
+  color: white;
+  background-color: rgb(67, 67, 67);
   display: grid;
   grid-template-rows: 3fr 3fr 1fr;
   align-items: center;
   justify-items: center;
-  margin-top: 60px;
+  height: 100vh;
   font-family: var(--font-geist-sans);
 }
 
