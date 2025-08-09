@@ -97,7 +97,7 @@ export default function Home() {
               <div className="spinnerin"></div>
             </div>
           }
-          {loading && imageUrl && 
+          {imageUrl && 
             <div className="w-64 h-64 rounded-lg">
               <img src={imageUrl} onLoad={() => setLoading(false)}/>
             </div>

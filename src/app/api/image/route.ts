@@ -27,6 +27,7 @@ export async function POST(request: Request) {
     trying to be conveyed with each of those emojis: subjectEmotion: ${subjectEmotion}, subjectArousal: ${subjectArousal}, 
     verbEmotion: ${verbEmotion}, verbArousal: ${verbArousal}, objectEmotion: ${objectEmotion}, objectArousal: ${objectArousal}.
     Emotion is on a scale of 0-100 from unhappy to happy (50 is neutral). Arousal is 0-100 (deactivated to activated).`,
+    // prompt: `You are generating an image to communicate a sentance of emojis that contains the emotion and arousal of each emoji. Emotion is a scale of 0-100 (unhappy-happy) and arousal is 0-100 (deactivated-activated). You are given the following emoji types: subject, verb, and object. The subject is ${subject} with the emotion of ${subjectEmotion} and arousal of ${subjectArousal}. The verb is ${verb} with the emotion of ${verbEmotion} and arousal of ${verbArousal}. The object is ${object} with the emotion of ${objectEmotion} and arousal of ${objectArousal}.`,
     size: "1024x1024",
   });
   console.log(result.data![0].url);
