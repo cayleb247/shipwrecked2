@@ -13,10 +13,10 @@ export default function Home() {
   const action_emojis = ["🤣", "😉", "😘", "🤫", "🫡", "😮‍💨", "🫨", "😴", "🤮", "🤧", "🥳", "🤬", "💬", "👋", "🖖", "👌", "🤞", "👈", "👉", "👆", "👇", "🫵", "👍", "👎", "✊", "🤝", "✍", "💅", "🤳", "💪", "👂", "👃"];
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  const handleGenerate = async () => {
-    const response = await fetch("/api/image", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  const createPrompt = async () => {
+    const response = await fetch('/api/text', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         subject: emoji1,
         subjectEmotion: emoji1Emotion,
@@ -30,11 +30,27 @@ export default function Home() {
       }),
     });
 
-    console.log(response);
-    const url = await response.json();
-    console.log(url);
-    setImageUrl(url);
+    const data = await response.json();
+    console.log(data);
+
+    return data;
   };
+
+  const handleGenerate = async () => {
+    const promptData = await createPrompt();
+    const promptText = promptData.text || promptData; 
+    if(promptText) {
+      const response = await fetch('/api/image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: promptText })
+      });
+      console.log(response);
+      const url = await response.json();
+      console.log(url);
+      setImageUrl(url);
+    } 
+  }
 
   const [emoji1, setEmoji1] = useState<string>(object_emojis[0]);
   const [emoji1Emotion, setEmoji1Emotion] = useState([50]);
