@@ -36,6 +36,7 @@ a {
   border: dashed 1px grey;
   border-radius: 8px;
   background-color: rgb(226, 226, 226);
+
   &:hover {
     cursor: pointer;
   }
@@ -191,6 +192,7 @@ a {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

@@ -12,6 +12,7 @@ export default function ArouselSlider({
   value,
   min = 0,
   max = 100,
+  onValueChange,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
   const _values = React.useMemo(
@@ -23,10 +24,10 @@ export default function ArouselSlider({
         : [min, max],
     [value, defaultValue, min, max]
   );
-
+  
   return (
     <div className={styles.sliderContainer}>
-      <p>&#128577;</p>
+      <p>&#128528;</p>
       <SliderPrimitive.Root
         data-slot="slider"
         defaultValue={defaultValue}
@@ -37,6 +38,7 @@ export default function ArouselSlider({
           "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
           className
         )}
+        onValueChange={onValueChange}
         {...props}
       >
         <SliderPrimitive.Track
@@ -64,7 +66,7 @@ export default function ArouselSlider({
           />
         ))}
       </SliderPrimitive.Root>
-      <p>&#128578;</p>
+      <p>&#128562;</p>
     </div>
   );
 }
