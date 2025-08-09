@@ -4,10 +4,12 @@ import styles from "./page.module.css";
 import { useState } from "react";
 import EmojiPicker from '@/components/EmojiPicker';
 import React from "react";
+import EmotionSlider from "@/components/EmotionSlider";
+import ArouselSlider from "@/components/ArouselSlider";
 
 export default function Home() {
 
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   const object_emojis = ["🚃", "👨", "🐕", "✈️", "🌮", "📕"];
   const action_emojis = ["🏃‍➡️", "🏊", "🚶‍♂️", "🤣"];
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -36,21 +38,23 @@ export default function Home() {
   }
 
   const [emoji1, setEmoji1] = useState<string>(object_emojis[0]);
-  const [emoji1Emotion, setEmoji1Emotion] = useState(50);
-  const [emoji1Arousal, setEmoji1Arousal] = useState(50);
+  const [emoji1Emotion, setEmoji1Emotion] = useState([50]);
+  const [emoji1Arousal, setEmoji1Arousal] = useState([50]);
   const [emoji2, setEmoji2] = useState<string>(action_emojis[0]);
-  const [emoji2Emotion, setEmoji2Emotion] = useState(50);
-  const [emoji2Arousal, setEmoji2Arousal] = useState(50);
+  const [emoji2Emotion, setEmoji2Emotion] = useState([50]);
+  const [emoji2Arousal, setEmoji2Arousal] = useState([50]);
   const [emoji3, setEmoji3] = useState<string>(object_emojis[1]);
-  const [emoji3Emotion, setEmoji3Emotion] = useState(50);
-  const [emoji3Arousal, setEmoji3Arousal] = useState(50);
+  const [emoji3Emotion, setEmoji3Emotion] = useState([50]);
+  const [emoji3Arousal, setEmoji3Arousal] = useState([50]);
 
   return (
     <div className={styles.page}>
-      <div className="h-32 flex flex-row gap-10 text-lg">
-        <div onClick={() => { }}>
-          <div>
-            <EmojiPicker selectedEmoji={emoji1} emojiList={object_emojis} setEmoji={setEmoji1} />
+      <div className="h-32 flex flex-row gap-4 text-lg w-screen">
+        <div className="flex flex-row w-1/4 gap-2">
+          <EmojiPicker selectedEmoji={emoji1} emojiList={object_emojis} setEmoji={setEmoji1} setEmojiEmotion={setEmoji1Emotion} setEmojiArousal={setEmoji1Arousal} />
+          <div className="flex flex-col w-2/3">
+            <EmotionSlider value={emoji1Emotion} defaultValue={[50]} onValueChange={setEmoji1Emotion} />
+            <ArouselSlider value={emoji1Arousal} defaultValue={[50]} onValueChange={setEmoji1Arousal} />
           </div>
         </div>
 
@@ -58,9 +62,11 @@ export default function Home() {
           <p className="text-3xl">+</p>
         </div>
 
-        <div>
-          <div>
-            <EmojiPicker selectedEmoji={emoji2} emojiList={action_emojis} setEmoji={setEmoji2} />
+        <div className="flex flex-row w-1/4 gap-2">
+          <EmojiPicker selectedEmoji={emoji2} emojiList={action_emojis} setEmoji={setEmoji2} setEmojiEmotion={setEmoji2Emotion} setEmojiArousal={setEmoji2Arousal} />
+          <div className="flex flex-col w-2/3">
+            <EmotionSlider value={emoji2Emotion} defaultValue={[50]} onValueChange={setEmoji2Emotion} />
+            <ArouselSlider value={emoji2Arousal} defaultValue={[50]} onValueChange={setEmoji2Arousal} />
           </div>
         </div>
 
@@ -68,9 +74,11 @@ export default function Home() {
           <p className="text-3xl">+</p>
         </div>
 
-        <div className="mr">
-          <div>
-            <EmojiPicker selectedEmoji={emoji3} emojiList={action_emojis} setEmoji={setEmoji3} />
+        <div className="flex flex-row w-1/4 gap-2">
+          <EmojiPicker selectedEmoji={emoji3} emojiList={action_emojis} setEmoji={setEmoji3} setEmojiEmotion={setEmoji3Emotion} setEmojiArousal={setEmoji3Arousal} />
+          <div className="flex flex-col w-2/3">
+            <EmotionSlider value={emoji3Emotion} defaultValue={[50]} onValueChange={setEmoji3Emotion} />
+            <ArouselSlider value={emoji3Arousal} defaultValue={[50]} onValueChange={setEmoji3Arousal} />
           </div>
         </div>
 
