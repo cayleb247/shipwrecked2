@@ -9,14 +9,15 @@ import ArouselSlider from "@/components/ArouselSlider";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
+  const action_emojis = ["🤣", "😉", "😘", "🤫", "🫡", "😮‍💨", "🫨", "😴", "🤮", "🤧", "🥳", "🤬", "💬", "👋", "🖖", "👌", "🤞", "👈", "👉", "👆", "👇", "🫵", "👍", "👎", "✊", "🤝", "✍", "💅", "🤳", "💪", "👂", "👃"];
   const subject_emojis = ["🚃", "👨", "🐕", "✈️", "🌮", "📕", "👶", "🧒", "👦", "👧", "🧑", "👱", "👨", "🧔", "🧔‍♂️", "🥷", "👷‍♀️", "🫅", "🤴", "👸", "🎅", "🦸", "🦸‍♂️", "🧙", "🧛", "🧜‍♂️", "🧟", "🐵", "🐒", "🦍", "🦧", "🐶", "🐕", "🦊", "🐱", "🐮", "🐷", "🐔", "🐧", "💐", "🌸", "🥀"];
-  const action_emojis = ["🏃‍➡️", "🏊", "🚶‍♂️", "🤣"];
+  
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  const handleGenerate = async () => {
-    const response = await fetch("/api/image", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  const createPrompt = async () => {
+    const response = await fetch('/api/text', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         subject: emoji1,
         subjectEmotion: emoji1Emotion,
@@ -30,11 +31,27 @@ export default function Home() {
       }),
     });
 
-    console.log(response);
-    const url = await response.json();
-    console.log(url);
-    setImageUrl(url);
+    const data = await response.json();
+    console.log(data);
+
+    return data;
   };
+
+  const handleGenerate = async () => {
+    const promptData = await createPrompt();
+    const promptText = promptData.text || promptData; 
+    if(promptText) {
+      const response = await fetch('/api/image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: promptText })
+      });
+      console.log(response);
+      const url = await response.json();
+      console.log(url);
+      setImageUrl(url);
+    } 
+  }
 
   const [emoji1, setEmoji1] = useState<string>(subject_emojis[0]);
   const [emoji1Emotion, setEmoji1Emotion] = useState([50]);
@@ -54,7 +71,7 @@ export default function Home() {
           <h1 className="text-[3rem]">➡️</h1>
           <h1 className="text-[3rem]">🖼️</h1>
         </div>
-        
+
         <div className="h-32 flex flex-row gap-4 text-lg w-screen justify-center">
           <div className="flex flex-row w-1/4 gap-2">
             <EmojiPicker
