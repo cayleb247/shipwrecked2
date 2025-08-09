@@ -19,7 +19,7 @@ export default function EmojiPicker({ emojis }: { emojis: string[] }) {
     return (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger className={"w-32 h-32"}>
-                <Button className={"w-32 h-32 text-8xl bg-black/0 hover:bg-black/20"}>{currentEmoji}</Button>
+                <Button className={"w-32 h-32 text-8xl bg-black/5 hover:bg-black/20"}>{currentEmoji}</Button>
             </DialogTrigger>
             <DialogContent className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 p-4 h-[calc(75%)] w-full">
                 {emojis.map(emoji => (

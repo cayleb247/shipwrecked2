@@ -12,34 +12,39 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <div className="flex flex-row gap-4 text-lg">
-        <div className={styles.emojiContainer} onClick={() => {}}>
-          <div className={styles.emojiBox}>
+      <div className="h-32 flex flex-row gap-4 text-lg">
+        <div onClick={() => {}}>
+          <div>
             <EmojiPicker emojis={object_emojis} />
           </div>
         </div>
-        <p>+</p>
-        <div className={styles.emojiContainer}>
-          <div className={styles.emojiBox}>
+
+        <div className="flex items-center justify-center h-full">
+          <p className="text-3xl">+</p>
+        </div> 
+
+        <div>
+          <div>
             <EmojiPicker emojis={action_emojis} />
           </div>
         </div>
-        <div className="items-center h-full">
+
+        <div className="flex items-center justify-center h-full">
           <p className="text-3xl">+</p>
         </div>
-        <div className={styles.emojiContainer}>
-          <div className={styles.emojiBox}>
+      
+        <div>
+          <div>
             🟩
           </div>
         </div>
 
-        <div>
-          <button className="bg-green-200 rounded-full text-white w-16 h-16 hover:">
+        <div className="flex items-center">
+            <button className="bg-green-200 rounded-full text-white w-16 h-16 hover:bg-green-400 transition-colors duration-300">
             <span className="text-black"> = </span>
-          </button>
+            </button>
         </div>
       </div>
-
       
     </div>
   );
