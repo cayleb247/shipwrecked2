@@ -10,7 +10,7 @@ import ArouselSlider from "@/components/ArouselSlider";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const object_emojis = ["🚃", "👨", "🐕", "✈️", "🌮", "📕"];
-  const action_emojis = ["🏃‍➡️", "🏊", "🚶‍♂️", "🤣"];
+  const action_emojis = ["🤣", "😉", "😘", "🤫", "🫡", "😮‍💨", "🫨", "😴", "🤮", "🤧", "🥳", "🤬", "💬", "👋", "🖖", "👌", "🤞", "👈", "👉", "👆", "👇", "🫵", "👍", "👎", "✊", "🤝", "✍", "💅", "🤳", "💪", "👂", "👃"];
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const handleGenerate = async () => {
@@ -54,7 +54,7 @@ export default function Home() {
           <h1 className="text-[3rem]">➡️</h1>
           <h1 className="text-[3rem]">🖼️</h1>
         </div>
-        
+
         <div className="h-32 flex flex-row gap-4 text-lg w-screen justify-center">
           <div className="flex flex-row w-1/4 gap-2">
             <EmojiPicker
