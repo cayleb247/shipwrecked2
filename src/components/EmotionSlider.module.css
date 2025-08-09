@@ -1,0 +1,21 @@
+.sliderContainer {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.gradientBackground {
+  background: #f00202;
+  background: linear-gradient(
+    90deg,
+    rgba(240, 2, 2, 1) 0%,
+    rgba(255, 255, 0, 1) 100%
+  );
+  filter: drop-shadow(0px 2px 6px #000000);
+}
+
+.thumb {
+  background-color: white;
+  opacity: 0.75;
+  cursor: pointer;
+}
