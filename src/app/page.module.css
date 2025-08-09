@@ -180,10 +180,6 @@ a.secondary {
   }
 }
 
-.emojiContainer {
-
-}
-
 .emojiDiv {
   font-size: 30px;
   display: flex;
@@ -192,8 +188,6 @@ a.secondary {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  height: 100%;
-  width: 100%;
   font-size: 3rem;
 }
 
