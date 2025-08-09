@@ -128,7 +128,7 @@ export default function Home() {
           <div className="flex flex-row w-1/4 gap-2">
             <EmojiPicker
               selectedEmoji={emoji3}
-              emojiList={action_emojis}
+              emojiList={subject_emojis}
               setEmoji={setEmoji3}
               setEmojiEmotion={setEmoji3Emotion}
               setEmojiArousal={setEmoji3Arousal}
