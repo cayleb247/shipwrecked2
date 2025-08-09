@@ -9,8 +9,9 @@ import ArouselSlider from "@/components/ArouselSlider";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
-  const object_emojis = ["🚃", "👨", "🐕", "✈️", "🌮", "📕", "😈", "💀", "💩", "🤡", "👻", "👽", "🤖", "😺", "🙉", "👃", "🫀", "🦷", "👅", "👄", "👶", "👴", "👵", "🧑‍🍳", "🧑‍🔧", "🥷", "🧟‍♂️"];
-  const action_emojis = ["🏃‍➡️", "🏊", "🚶‍♂️", "🤣"];
+  const action_emojis = ["🤣", "😉", "😘", "🤫", "🫡", "😮‍💨", "🫨", "😴", "🤮", "🤧", "🥳", "🤬", "💬", "👋", "🖖", "👌", "🤞", "👈", "👉", "👆", "👇", "🫵", "👍", "👎", "✊", "🤝", "✍", "💅", "🤳", "💪", "👂", "👃"];
+  const subject_emojis = ["🚃", "👨", "🐕", "✈️", "🌮", "📕", "👶", "🧒", "👦", "👧", "🧑", "👱", "👨", "🧔", "🧔‍♂️", "🥷", "👷‍♀️", "🫅", "🤴", "👸", "🎅", "🦸", "🦸‍♂️", "🧙", "🧛", "🧜‍♂️", "🧟", "🐵", "🐒", "🦍", "🦧", "🐶", "🐕", "🦊", "🐱", "🐮", "🐷", "🐔", "🐧", "💐", "🌸", "🥀"];
+  
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const createPrompt = async () => {
@@ -52,13 +53,13 @@ export default function Home() {
     } 
   }
 
-  const [emoji1, setEmoji1] = useState<string>(object_emojis[0]);
+  const [emoji1, setEmoji1] = useState<string>(subject_emojis[0]);
   const [emoji1Emotion, setEmoji1Emotion] = useState([50]);
   const [emoji1Arousal, setEmoji1Arousal] = useState([50]);
   const [emoji2, setEmoji2] = useState<string>(action_emojis[0]);
   const [emoji2Emotion, setEmoji2Emotion] = useState([50]);
   const [emoji2Arousal, setEmoji2Arousal] = useState([50]);
-  const [emoji3, setEmoji3] = useState<string>(object_emojis[1]);
+  const [emoji3, setEmoji3] = useState<string>(subject_emojis[1]);
   const [emoji3Emotion, setEmoji3Emotion] = useState([50]);
   const [emoji3Arousal, setEmoji3Arousal] = useState([50]);
 
@@ -70,12 +71,12 @@ export default function Home() {
           <h1 className="text-[3rem]">➡️</h1>
           <h1 className="text-[3rem]">🖼️</h1>
         </div>
-        
+
         <div className="h-32 flex flex-row gap-4 text-lg w-screen justify-center">
           <div className="flex flex-row w-1/4 gap-2">
             <EmojiPicker
               selectedEmoji={emoji1}
-              emojiList={object_emojis}
+              emojiList={subject_emojis}
               setEmoji={setEmoji1}
               setEmojiEmotion={setEmoji1Emotion}
               setEmojiArousal={setEmoji1Arousal}
@@ -127,7 +128,7 @@ export default function Home() {
           <div className="flex flex-row w-1/4 gap-2">
             <EmojiPicker
               selectedEmoji={emoji3}
-              emojiList={action_emojis}
+              emojiList={subject_emojis}
               setEmoji={setEmoji3}
               setEmojiEmotion={setEmoji3Emotion}
               setEmojiArousal={setEmoji3Arousal}
